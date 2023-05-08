@@ -1,5 +1,5 @@
 const DATABASE_URL =
-  'postgresql://matias:4A86UUsO7K3jN3AypIMvWw@mrkt-latam-10806.7tt.cockroachlabs.cloud:26257/marketplace?sslmode=verify-full';
+  'postgresql://matias:@mrkt-latam-10806.7tt.cockroachlabs.cloud:26257/marketplace?sslmode=verify-full';
 
 const { Client } = require('pg');
 
@@ -128,6 +128,4 @@ const eliminarTablaFavoritos = async () => {
 
 //GRANT ALL PRIVILEGES ON mi_base_de_datos.mi_tabla TO 'user1'@'192.168.1.100';
 
-//matias 4A86UUsO7K3jN3AypIMvWw
-//felo 3s919IMm0dDNzAYLtInlbA
-//danielAX3lpr3OkXp3ZpUuWiwbEA
+
