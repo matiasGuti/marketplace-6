@@ -1,5 +1,5 @@
 const DATABASE_URL =
-  'postgresql://matias:@mrkt-latam-10806.7tt.cockroachlabs.cloud:26257/marketplace?sslmode=verify-full';
+  'postgresql://felo:3s919IMm0dDNzAYLtInlbA@mrkt-latam-10806.7tt.cockroachlabs.cloud:26257/marketplace?sslmode=verify-full';
 
 const { Client } = require('pg');
 
@@ -118,7 +118,7 @@ const eliminarTablaFavoritos = async () => {
 // crearTablaUsuarios();
 // crearTablaProductos();
 // crearTablaCarro();
-// crearTablaFavoritos();
+crearTablaFavoritos();
 
 //En caso de botar
 // eliminarTablaUsuarios();
