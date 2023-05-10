@@ -40,3 +40,27 @@ app.delete('/productos/:id', async (req, res) => {
     res.status(500).send(err)
   }
 })
+
+
+//Rutas usuarios
+app.post('/usuarios', async (req, res) => {
+  try {
+      const usuario = req.body
+      await registrarUsuario(usuario)
+      res.send('Usuario creado con éxito!')
+  }
+  catch (error) {
+      res.status(500).send(error)
+  }
+})
+app.post('/login', async (req, res) => {
+  try {
+      const {email, password} = req.body
+      await verificarCredenciales(email, password)
+      const token = jwt.sign({ email }, "az_AZ")
+      res.send(token)
+  } catch (error) {
+      console.log(error)
+      res.status(error.code || 500).send(error)
+  }
+})
