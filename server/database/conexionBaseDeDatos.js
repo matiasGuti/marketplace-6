@@ -1,6 +1,10 @@
 const DATABASE_URL =
+<<<<<<< HEAD
   'postgresql://daniel:AX3lpr3OkXp3ZpUuWiwbEA@mrkt-latam-10806.7tt.cockroachlabs.cloud:26257/marketplace?sslmode=verify-full';
   
+=======
+  'postgresql://felo:@mrkt-latam-10806.7tt.cockroachlabs.cloud:26257/marketplace?sslmode=verify-full';
+>>>>>>> 1b6bfe6ef4eaaa334ca4fc9794d4268147e2e02e
 
 const { Client } = require('pg');
 
@@ -25,7 +29,7 @@ const crearTablaProductos = async () => {
   await client.connect();
   try {
     const consulta =
-      'create table productos (id_producto serial primary key, titulo varchar(255) not null, descripcion varchar(255) not null, precio int not null, imagen varchar not null, favoritos int not null, id_usuario int references usuarios(id_usuario))';
+      'create table productos (id_producto serial primary key, titulo varchar(255), descripcion varchar(255), precio int, imagen varchar, favoritos int, id_usuario int references usuarios(id_usuario))';
     const results = await client.query(consulta);
     console.log(results);
   } catch (err) {
@@ -119,14 +123,12 @@ const eliminarTablaFavoritos = async () => {
 // crearTablaUsuarios();
 // crearTablaProductos();
 // crearTablaCarro();
-// crearTablaFavoritos();
+crearTablaFavoritos();
 
 //En caso de botar
 // eliminarTablaUsuarios();
 // eliminarTablaProducto();
 // eliminarTablaCarro();
-eliminarTablaFavoritos();
-
-//GRANT ALL PRIVILEGES ON mi_base_de_datos.mi_tabla TO 'user1'@'192.168.1.100';
+// eliminarTablaFavoritos();
 
 
