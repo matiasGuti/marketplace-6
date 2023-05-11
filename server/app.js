@@ -1,4 +1,5 @@
 const { obtenerProductos, agregarProducto, eliminarProducto } = require('./consultas/consultasProducto');
+const { registrarUsuario, verificarCredenciales } = require('./consultas/consultasUsuario')
 const express = require('express');
 const cors = require('cors');
 
