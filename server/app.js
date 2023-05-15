@@ -42,7 +42,6 @@ app.delete('/productos/:id', async (req, res) => {
   }
 })
 
-
 //Rutas usuarios
 app.post('/usuarios', async (req, res) => {
   try {
@@ -54,6 +53,7 @@ app.post('/usuarios', async (req, res) => {
       res.status(500).send(error)
   }
 })
+
 app.post('/login', async (req, res) => {
   try {
       const {email, password} = req.body
