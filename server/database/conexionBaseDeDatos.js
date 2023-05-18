@@ -1,10 +1,6 @@
 const DATABASE_URL =
-<<<<<<< HEAD
   'postgresql://daniel:AX3lpr3OkXp3ZpUuWiwbEA@mrkt-latam-10806.7tt.cockroachlabs.cloud:26257/marketplace?sslmode=verify-full';
   
-=======
-  'postgresql://felo:@mrkt-latam-10806.7tt.cockroachlabs.cloud:26257/marketplace?sslmode=verify-full';
->>>>>>> 1b6bfe6ef4eaaa334ca4fc9794d4268147e2e02e
 
 const { Client } = require('pg');
 
