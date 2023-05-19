@@ -1,21 +1,16 @@
 import './App.css';
 import NavBarHome from './components/Navbar';
 import Tienda from './views/Tienda';
+import Registro from './views/Registro';
 import Home from './views/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-
-
 
 function App() {
   return (
     <div>
-      
-          <NavBarHome />
-          <Tienda />
-          <Home />
-          
+      <NavBarHome />
+      <Registro />
+      {/* <Home /> */}
     </div>
   );
 }
