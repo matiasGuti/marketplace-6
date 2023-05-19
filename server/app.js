@@ -1,5 +1,6 @@
 const { obtenerProductos, agregarProducto, eliminarProducto } = require('./consultas/consultasProducto');
 const { registrarUsuario, verificarCredenciales, obtenerUsuario, obtenerUsuarios } = require('./consultas/consultasUsuario');
+const { obtenerCarroUsuario, agregarProductoAlCarro, eliminarProductoDelCarro, sumarCantidadProducto, restarCantidadProducto } = require('./consultas/consultasCarro')
 const { validarToken } = require('./middlewares/middlewares');
 const express = require('express');
 const cors = require('cors');
@@ -85,6 +86,40 @@ app.delete('/productos/:id', async (req, res) => {
     const { id } = req.params;
     await eliminarProducto(id);
     res.send('Producto eliminado con exito');
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+//Rutas carro
+app.get('/carro', validarToken, async (req, res) => {
+  try {
+    const { email } = req.user
+    const { id_usuario } = await obtenerUsuario(email)
+    const carro = await obtenerCarroUsuario(id_usuario)
+    res.json(carro)
+  } catch (error) {
+    res.status(error.code || 500).send(error);
+  }
+})
+
+app.post('/carro', async (req, res) => {
+  try {
+    const { id_usuario, precio, id_producto } = req.body
+    await agregarProductoAlCarro(id_usuario, precio, id_producto);
+    res.send('Producto agregado al carro con exito');
+  } catch (error) {
+    res.status(error.code || 500).send(error);
+  }
+})
+
+//No se cual poner aca arriba
+app.delete('/carro/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { id_usuario } = req.body;
+    await eliminarProductoDelCarro(id_usuario, id);
+    res.send('Producto eliminado del carro con exito');
   } catch (err) {
     res.status(500).send(err);
   }

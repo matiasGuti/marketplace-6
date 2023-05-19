@@ -1,10 +1,5 @@
-
-// const { Client } = require('pg');
 const bcrypt = require('bcryptjs');
 const pool = require('../database/clientConnect')
-
-
-// const pool = new Client(DATABASE_URL);
 
 
 const obtenerUsuarios = async (email) => {
