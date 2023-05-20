@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 //Views
 
 import Carrito from './views/Carrito';
-
+import Productos from './views/Productos.jsx'
 import Registrar from './views/Registrar'
 import Login from './views/Login';
 import NewHome from './views/NewHome';
@@ -19,9 +19,7 @@ function App() {
   const [market, setMarket] = useState([])
 
 
-                          // Base de prueba perros.json  
-                          
-                          
+                                                                           //REACT//
   const datos = async () => {
     const endpoint = './perros.json'  // .json
     const response = await fetch(endpoint)
@@ -48,7 +46,7 @@ function App() {
             <Route path='/registrar' element={<Registrar />} />
             <Route path='/login' element={<Login />} />
             <Route path='/carrito' element={<Carrito />} />
-           
+            <Route path='/productos/:id' element={<Productos />} />
           </Routes>
         </BrowserRouter>
       </MyContext.Provider>
