@@ -12,6 +12,8 @@ import NewHome from './views/NewHome';
 //Components
 import Navbar2 from './components/Navbar2';
 
+import './App.css'
+
 function App() {
   const [market, setMarket] = useState([]);
 

@@ -36,7 +36,7 @@
 
 .btn-registro {
   width: 10rem;
-  background-color: #1c4efd;
+  background-color: #24bb19;
   border: none;
   cursor: pointer;
   padding: 0.5rem 1rem;
@@ -46,8 +46,8 @@
   font-weight: 500;
 }
 
-form > button:hover {
-  background-color: #0f236b;
+.btn-registro:hover {
+  background-color: #186d14;
 }
 
 @media screen and (max-width: 1023px) {
