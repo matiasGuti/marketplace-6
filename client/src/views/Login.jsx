@@ -2,21 +2,25 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Container } from 'react-bootstrap';
 
+// Estilos
+import '../styles/Login.css'
+
 function Login() {
   return (
-    <Container>
-      <Form>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Ingresá tu email" />
+    <Container className='container-login'>
+      <h2>Ingresar</h2>
+      <Form className='form-container'>
+        <Form.Group className='input-container' controlId='formBasicEmail'>
+          <Form.Label className='input-label'>Email</Form.Label>
+          <Form.Control type='email' placeholder='Ingresá tu email' />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Ingresá tu Password" />
+        <Form.Group className='input-container' controlId='formBasicPassword'>
+          <Form.Label className='input-label'>Password</Form.Label>
+          <Form.Control type='password' placeholder='Ingresá tu Password' />
         </Form.Group>
-        <Button variant="success" type="submit">
-          Submit
+        <Button variant='success' className='btn-login'>
+          Ingresar
         </Button>
       </Form>
     </Container>
