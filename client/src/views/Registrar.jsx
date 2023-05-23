@@ -23,8 +23,6 @@ function Registrar() {
     const endpoint = '/usuarios';
     try {
       await axios.post(urlServidor + endpoint, usuario);
-      console.log('Llegue');
-      debugger;
       navigate('/login');
       alert('Usuario registrado con exito');
     } catch (error) {

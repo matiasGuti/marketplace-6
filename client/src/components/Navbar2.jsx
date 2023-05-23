@@ -17,7 +17,6 @@ function Navbar2() {
         <Navbar.Collapse id='navbarScroll'>
           <Nav
             className='nav-container'
-            style={{ maxHeight: '100px' }}
             navbarScroll
           >
             <Link className='link-navbar fs-6 text-decoration-none' to='/registrar'>

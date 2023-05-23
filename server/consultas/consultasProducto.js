@@ -21,4 +21,5 @@ const eliminarProducto = async (id) => {
   console.log('Producto eliminado con exito');
 };
 
+
 module.exports = { obtenerProductos, agregarProducto, eliminarProducto };

@@ -12,12 +12,12 @@ function Login() {
       <Form className='form-container'>
         <Form.Group className='input-container' controlId='formBasicEmail'>
           <Form.Label className='input-label'>Email</Form.Label>
-          <Form.Control type='email' placeholder='Ingresá tu email' />
+          <Form.Control type='email' placeholder='Ingresa tu email' />
         </Form.Group>
 
         <Form.Group className='input-container' controlId='formBasicPassword'>
           <Form.Label className='input-label'>Password</Form.Label>
-          <Form.Control type='password' placeholder='Ingresá tu Password' />
+          <Form.Control type='password' placeholder='Ingresa tu Password' />
         </Form.Group>
         <Button variant='success' className='btn-login'>
           Ingresar
