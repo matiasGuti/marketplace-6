@@ -9,21 +9,18 @@ import Carrito from './views/Carrito';
 import Registrar from './views/Registrar';
 import Login from './views/Login';
 import NewHome from './views/NewHome';
+import Perfil from './views/Perfil';
+import Pagina404 from './views/Pagina404'
 
 //Components
 import Navbar2 from './components/Navbar2';
 
+// Estilos
 import './App.css'
 
 function App() {
   const [market, setMarket] = useState([]);
-
-  // const datos = async () => {
-  //   const endpoint = './perros.json'; // .json
-  //   const response = await fetch(endpoint);
-  //   const data = await response.json();
-  //   setMarket(data);
-  // };
+  const [usuario, setUsuario] = useState(null)
 
   const datos = async () => {
     const urlServidor = 'http://localhost:3000'
@@ -40,7 +37,7 @@ function App() {
     datos();
   }, []);
 
-  const globalState = { market };
+  const globalState = { market, usuario, setUsuario };
 
   return (
     <>
@@ -52,6 +49,8 @@ function App() {
             <Route path='/registrar' element={<Registrar />} />
             <Route path='/login' element={<Login />} />
             <Route path='/carrito' element={<Carrito />} />
+            <Route path='/perfil' element={<Perfil />} />  
+            <Route path='*' element={<Pagina404 />}/>          
           </Routes>
         </BrowserRouter>
       </MyContext.Provider>

@@ -1,12 +1,50 @@
+import { useState, useContext, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import MyContext from '../my-context';
+import axios from 'axios';
 
 // Estilos
-import '../styles/Navbar.css'
+import '../styles/Navbar.css';
 
 function Navbar2() {
+  const { usuario, setUsuario } = useContext(MyContext);
+  const [sesionIniciada, setSesionIniciada] = useState(false);
+  const navigate = useNavigate();
+
+  const obtenerDatosUsuario = async () => {
+    const urlServidor = 'http://localhost:3000';
+    const endpoint = '/usuarios';
+    const token = localStorage.getItem('token');
+
+    try {
+      const { data } = await axios.get(urlServidor + endpoint, {
+        headers: { Authorization: 'Bearer ' + token },
+      });
+      setUsuario(data);
+      setSesionIniciada(true);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const cerrarSesion = async () => {
+    try {
+      localStorage.clear();
+      alert('Has cerrado sesion');
+      setSesionIniciada(false);
+      navigate('/');
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    obtenerDatosUsuario();
+  }, []);
+
   return (
     <Navbar className='navbar' expand='lg'>
       <Container fluid>
@@ -15,17 +53,41 @@ function Navbar2() {
         </Link>
         <Navbar.Toggle aria-controls='navbarScroll' />
         <Navbar.Collapse id='navbarScroll'>
-          <Nav
-            className='nav-container'
-            navbarScroll
-          >
-            <Link className='link-navbar fs-6 text-decoration-none' to='/registrar'>
-              Crea tu cuenta
-            </Link>
-            <Link className='link-navbar fs-6 text-decoration-none' to='/login'>
-              Ingresa
-            </Link>
-            <Link className='carro-navbar fs-5 text-decoration-none' to='/carrito'>
+          <Nav className='nav-container' navbarScroll>
+            {!sesionIniciada && (
+              <Link
+                className='link-navbar fs-6 text-decoration-none'
+                to='/registrar'
+              >
+                Crea tu cuenta
+              </Link>
+            )}
+
+            {!sesionIniciada && (
+              <Link
+                className='link-navbar fs-6 text-decoration-none'
+                to='/login'
+              >
+                Ingresa
+              </Link>
+            )}
+            {sesionIniciada && (
+              <Link
+                className='link-navbar fs-6 text-decoration-none'
+                to='/perfil'
+              >
+                Perfil
+              </Link>
+            )}
+            {sesionIniciada && (
+              <button className='btn-cerrar-session' onClick={cerrarSesion}>
+                Cerrar Sesion
+              </button>
+            )}
+            <Link
+              className='carro-navbar fs-5 text-decoration-none'
+              to='/carrito'
+            >
               🛒
             </Link>
           </Nav>

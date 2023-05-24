@@ -34,6 +34,7 @@ app.post('/login', async (req, res) => {
     const token = jwt.sign({ email }, 'az_AZ');
     res.send(token);
   } catch (error) {
+    console.log('me cai');
     console.log(error.message);
     res.status(error.code || 500).send(error);
   }

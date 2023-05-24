@@ -12,8 +12,6 @@ function CardUno() {
   const { market } = useContext(MyContext);
   const navigate = useNavigate();
 
-  console.log(market);
-
   return (
     <Container className='container bg-success m-6'>
       <Row md={2} lg={3} className='g-5 m-5'>
