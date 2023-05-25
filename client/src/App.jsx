@@ -53,6 +53,8 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/carrito' element={<Carrito />} />
           </Routes>
+         
+
         </BrowserRouter>
       </MyContext.Provider>
     </>
