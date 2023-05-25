@@ -23,19 +23,19 @@ const Perfil = () => {
     <div className='perfil-container'>
       <h2>Bienvenido {usuario.nombre} a tu perfil</h2>
       <div className='opciones-perfil'>
-        <div className='ver-productos'>
+        <div>
           <p className='titulo-perfil'>Ver mis productos</p>
           <Link className='btn-perfil' to='/productos'>
             Ver
           </Link>
         </div>
-        <div className='crea-producto'>
+        <div>
           <p className='titulo-perfil'>Subir un producto</p>
           <Link className='btn-perfil' to='/subir'>
             Subir
           </Link>
         </div>
-        <div className='ver-favoritos'>
+        <div>
           <p className='titulo-perfil'>Ir a favoritos</p>
           <Link className='btn-perfil' to='/favoritos'>
             Ir

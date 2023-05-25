@@ -7,20 +7,24 @@ import Col from 'react-bootstrap/Col';
 import MyContext from '../my-context';
 import { useContext } from 'react';
 
-function NewHome() {
-  const { market } = useContext(MyContext);
-  
+const Productos = () => {
+  const { market, usuario } = useContext(MyContext);
+
+  const productosFiltrados = market.filter(
+    (prod) => prod.id_usuario === usuario.id_usuario
+  );
+
   return (
     <Container className='text-center'>
       <h1>Productos</h1>
       <Row>
         <Col>
-          <CardUno market={market}/>
+          <CardUno market={productosFiltrados} />
         </Col>
       </Row>
       <Footer />
     </Container>
   );
-}
+};
 
-export default NewHome;
+export default Productos;

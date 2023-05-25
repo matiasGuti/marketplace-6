@@ -11,6 +11,7 @@ import Login from './views/Login';
 import NewHome from './views/NewHome';
 import Perfil from './views/Perfil';
 import Pagina404 from './views/Pagina404'
+import Productos from './views/Productos';
 
 //Components
 import Navbar2 from './components/Navbar2';
@@ -22,18 +23,18 @@ function App() {
   const [market, setMarket] = useState([]);
   const [usuario, setUsuario] = useState(null)
 
-  const datos = async () => {
-    const urlServidor = 'http://localhost:3000'
-    const endpoint = '/productos'
-    try {
-      const { data } = await axios.get(urlServidor + endpoint)
-      setMarket(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   useEffect(() => {
+    const datos = async () => {
+      const urlServidor = 'http://localhost:3000'
+      const endpoint = '/productos'
+      try {
+        const { data } = await axios.get(urlServidor + endpoint)
+        setMarket(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
     datos();
   }, []);
 
@@ -50,6 +51,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/carrito' element={<Carrito />} />
             <Route path='/perfil' element={<Perfil />} />  
+            <Route path='/productos' element={<Productos />} />  
             <Route path='*' element={<Pagina404 />}/>          
           </Routes>
         </BrowserRouter>
