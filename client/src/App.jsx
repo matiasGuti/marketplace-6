@@ -9,38 +9,36 @@ import Carrito from './views/Carrito';
 import Registrar from './views/Registrar';
 import Login from './views/Login';
 import NewHome from './views/NewHome';
+import Perfil from './views/Perfil';
+import Pagina404 from './views/Pagina404'
+import Productos from './views/Productos';
 
 //Components
 import Navbar2 from './components/Navbar2';
 
+// Estilos
 import './App.css'
 
 function App() {
   const [market, setMarket] = useState([]);
-
-  // const datos = async () => {
-  //   const endpoint = './perros.json'; // .json
-  //   const response = await fetch(endpoint);
-  //   const data = await response.json();
-  //   setMarket(data);
-  // };
-
-  const datos = async () => {
-    const urlServidor = 'http://localhost:3000'
-    const endpoint = '/productos'
-    try {
-      const { data } = await axios.get(urlServidor + endpoint)
-      setMarket(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const [usuario, setUsuario] = useState(null)
 
   useEffect(() => {
+    const datos = async () => {
+      const urlServidor = 'http://localhost:3000'
+      const endpoint = '/productos'
+      try {
+        const { data } = await axios.get(urlServidor + endpoint)
+        setMarket(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
     datos();
   }, []);
 
-  const globalState = { market };
+  const globalState = { market, usuario, setUsuario };
 
   return (
     <>
@@ -52,6 +50,9 @@ function App() {
             <Route path='/registrar' element={<Registrar />} />
             <Route path='/login' element={<Login />} />
             <Route path='/carrito' element={<Carrito />} />
+            <Route path='/perfil' element={<Perfil />} />  
+            <Route path='/productos' element={<Productos />} />  
+            <Route path='*' element={<Pagina404 />}/>          
           </Routes>
          
 
