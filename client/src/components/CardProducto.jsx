@@ -1,31 +1,29 @@
-import { Link } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import { Container } from 'react-bootstrap';
 
-function CardProducto({ producto }) {
+import '../styles/CardProducto.css'
+
+function CardProducto() {
   return (
-    <div className='producto-card-container'>
-      <div className='img-container'>
-        <div className='producto-img'>
-          <img src={producto.imagen} alt={producto.descripcion} />
-        </div>
-        <h2 className='img-title'>
-          {producto.titulo.charAt(0).toUpperCase() + producto.titulo.slice(1)}
-        </h2>
-      </div>
-      <div className='details-container'>
-        <h2 className='detail-price'>
-          $ {producto.precio.toLocaleString('es-CL')}
-        </h2>
-        <div className='detail-button-container'>
-          <Link
-            className='details-button'
-            to={`/producto/${producto.id_producto}`}
-          >
-            Ver Más 👀
-          </Link>
-          <button className='cart-button'>Añadir 🛒</button>
-        </div>
-      </div>
-    </div>
+    <Container className='text-center d-flex justify-content-center  mb-1 p-4'>
+      <Card style={{ width: '40rem' }} className='p-3 m-1'>
+      <Card.Body >
+          <Card.Text>Titulo</Card.Text>
+        </Card.Body>
+        <Card.Img variant="top" src="https://placedog.net/501" className='cardProducto-img' />
+        <Card.Body>
+          <Card.Text>DescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripción</Card.Text>
+        </Card.Body>
+        <Card.Body>
+          <Card.Text>Precio</Card.Text>
+        </Card.Body>
+        <Button variant="outline-success">A Favoritos</Button>{' '}
+        <br/>
+        <Button variant="outline-success">Añadir al carro</Button>{' '}
+      </Card>
+      <br />
+    </Container>
   );
 }
 

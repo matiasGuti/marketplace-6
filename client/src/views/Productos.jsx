@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import MyContext from '../my-context';
 import { useContext } from 'react';
 
+
 const Productos = () => {
   const { market, usuario } = useContext(MyContext);
 
@@ -15,7 +16,7 @@ const Productos = () => {
   );
 
   return (
-    <Container className='text-center'>
+    <Container fluid>
       <h1>Productos</h1>
       <Row>
         <Col>

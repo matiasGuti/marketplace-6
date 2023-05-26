@@ -15,6 +15,8 @@ import Productos from './views/Productos';
 
 //Components
 import Navbar2 from './components/Navbar2';
+import CardProducto from './components/CardProducto';
+
 
 // Estilos
 import './App.css'
@@ -45,6 +47,7 @@ function App() {
       <MyContext.Provider value={globalState}>
         <BrowserRouter>
           <Navbar2 />
+          
           <Routes>
             <Route path='/' element={<NewHome />} />
             <Route path='/registrar' element={<Registrar />} />
@@ -54,7 +57,9 @@ function App() {
             <Route path='/productos' element={<Productos />} />  
             <Route path='*' element={<Pagina404 />}/>          
           </Routes>
-         
+
+
+         <CardProducto/>
 
         </BrowserRouter>
       </MyContext.Provider>
