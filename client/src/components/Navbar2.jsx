@@ -41,6 +41,14 @@ function Navbar2() {
     }
   };
 
+  const revisarInicioSesion = () => {
+    if (!localStorage.getItem('token')) {
+      navigate('/login')
+    } else {
+      navigate('/carrito')
+    }
+  }
+
   useEffect(() => {
     obtenerDatosUsuario();
   }, []);
@@ -84,12 +92,7 @@ function Navbar2() {
                 Cerrar Sesion
               </button>
             )}
-            <Link
-              className='carro-navbar fs-5 text-decoration-none'
-              to='/carrito'
-            >
-              🛒
-            </Link>
+            <a className='carro-navbar fs-5 text-decoration-none' onClick={revisarInicioSesion}>🛒</a>
           </Nav>
         </Navbar.Collapse>
       </Container>
