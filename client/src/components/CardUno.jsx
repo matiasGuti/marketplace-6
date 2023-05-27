@@ -29,28 +29,22 @@ function CardUno({ market }) {
       console.log(error.message);
     }
 
+    const informacionProducto = {
+      id_usuario: usuario.id_usuario,
+      precio: producto.precio,
+      id_producto: producto.id_producto,
+    };
+
     // Reviso primero si el producto ya esta agregado al carro, en ese caso sumo uno a la cantidad
     if (productoExiste) {
       const endpointSumar = '/sumar_uno';
-
-      const informacionProducto = {
-        id_usuario: usuario.id_usuario,
-        precio: producto.precio,
-        id_producto: producto.id_producto,
-      };
 
       await axios.post(urlServidor + endpointSumar, informacionProducto);
       alert('Producto agregado al carro');
     } else {
       // En caso contrario agrego el producto al carro
-      const productoAgregado = {
-        id_usuario: usuario.id_usuario,
-        precio: producto.precio,
-        id_producto: producto.id_producto,
-      };
-
       try {
-        await axios.post(urlServidor + endpoint, productoAgregado);
+        await axios.post(urlServidor + endpoint, informacionProducto);
         alert('Producto agregado al carro');
       } catch (error) {
         console.log(error.message);

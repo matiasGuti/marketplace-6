@@ -107,12 +107,9 @@ app.delete('/productos/:id', async (req, res) => {
 });
 
 //Rutas carro
-app.get('/carro', async (req, res) => {
+app.get('/carro/:id_usuario', async (req, res) => {
   try {
-    // validarToken 
-    // const { email } = req.user;
-    // const { id_usuario } = await obtenerUsuario(email);
-    const { id_usuario } = req.body
+    const { id_usuario } = req.params;
     const carro = await obtenerCarroUsuario(id_usuario);
     res.json(carro);
   } catch (error) {
@@ -146,6 +143,17 @@ app.post('/sumar_uno', async (req, res) => {
     const { id_usuario, precio, id_producto } = req.body
     await sumarCantidadProducto(precio, id_usuario, id_producto)
     res.send('Cantidad aumentada con exito')
+  } catch (err) {
+    res.status(err.code || 500).send(err);
+  }
+})
+
+//Restar uno a la cantidad
+app.post('/restar_uno', async(req, res) => {
+  try {
+    const { id_usuario, precio, id_producto } = req.body
+    await restarCantidadProducto(precio, id_usuario, id_producto)
+    res.send('Cantidad restada con exito')
   } catch (err) {
     res.status(err.code || 500).send(err);
   }

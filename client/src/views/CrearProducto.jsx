@@ -6,12 +6,19 @@ import axios from 'axios';
 import MyContext from '../my-context';
 
 //Estilos
-import '../styles/CrearProducto.css'
+import '../styles/CrearProducto.css';
 
 const CrearProducto = () => {
   const [producto, setProducto] = useState('');
   const { usuario } = useContext(MyContext);
   const navigate = useNavigate();
+
+  // Debe estar con sesion iniciada para entrar a esta view (por si tipea la url a mano)
+  const usuarioSinIniciarSesion = () => {
+    if (!localStorage.getItem('token')) {
+      navigate('/error');
+    }
+  };
 
   useEffect(() => {
     usuarioSinIniciarSesion();
@@ -30,15 +37,9 @@ const CrearProducto = () => {
       const productoAEnviar = { ...producto, id_usuario: usuario.id_usuario };
       await axios.post(urlServidor + endpoint, productoAEnviar);
       navigate('/');
-      window.location.reload()
+      window.location.reload();
     } catch (error) {
       console.log(error);
-    }
-  };
-
-  const usuarioSinIniciarSesion = () => {
-    if (!localStorage.getItem('token')) {
-      navigate('/error');
     }
   };
 

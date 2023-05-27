@@ -2,9 +2,10 @@ const pool = require('../database/clientConnect');
 const format = require('pg-format');
 
 const obtenerCarroUsuario = async (id_usuario) => {
-  const consulta = 'SELECT * FROM carro';
+  const consulta =
+    'SELECT a.id_producto, a.cantidad_total, a.precio_total, b.imagen, b.titulo, b.precio as precio_unitario FROM carro as a LEFT JOIN productos as b on a.id_producto = b.id_producto WHERE a.id_usuario = $1';
   const valor = [id_usuario];
-  const { rows: carro } = await pool.query(consulta);
+  const { rows: carro } = await pool.query(consulta, valor);
 
   return carro;
 };
@@ -16,12 +17,12 @@ const agregarProductoAlCarro = async (id_usuario, precio, id_producto) => {
   console.log('Producto agregado al carro con exito');
 };
 
-const checkProductoAgregado = async ({id_usuario, id_producto}) => {
-  let filtros = []
+const checkProductoAgregado = async ({ id_usuario, id_producto }) => {
+  let filtros = [];
 
   //Revisar si los parametros no son nulos, en caso de que sea asi, crea el string formateado para cada parametro no nulo
-  if (id_usuario) filtros.push(format('id_usuario = %s', id_usuario))
-  if (id_producto) filtros.push(format('id_producto = %s', id_producto))
+  if (id_usuario) filtros.push(format('id_usuario = %s', id_usuario));
+  if (id_producto) filtros.push(format('id_producto = %s', id_producto));
 
   //Crear consulta final con todos los filtros no nulos
   let consulta = 'SELECT * FROM carro';
@@ -32,8 +33,8 @@ const checkProductoAgregado = async ({id_usuario, id_producto}) => {
 
   try {
     const { rows } = await pool.query(consulta);
-    if (rows.length === 0) return false
-    return true
+    if (rows.length === 0) return false;
+    return true;
   } catch (error) {
     console.log(error.message);
   }
@@ -56,22 +57,10 @@ const sumarCantidadProducto = async (precio, id_usuario, id_producto) => {
 };
 
 const restarCantidadProducto = async (precio, id_usuario, id_producto) => {
-  //Revisar si la cantidad total de productos del mismo tipo que tiene en el carro es = 1 para eliminar
   const consulta =
-    'SELECT cantidad_total FROM carro WHERE id_usuario = $1 AND id_producto = $2';
-  const valores = [id_usuario, id_producto];
-  const { rows: producto } = await pool.query(consulta, valores);
-
-  if (producto.cantidad_total === 1) {
-    await eliminarProductoDelCarro(id_usuario, id_producto);
-    console.log('producto eliminado con exito');
-    return;
-  }
-
-  const consulta2 =
     'UPDATE carro SET cantidad_total = cantidad_total - 1, precio_total= precio_total - $1  WHERE id_usuario = $2 AND id_producto = $3';
-  const valores2 = [precio, id_usuario, id_producto];
-  const result = await pool.query(consulta2, valores2);
+  const valores = [precio, id_usuario, id_producto];
+  const result = await pool.query(consulta, valores);
   console.log('Cantidad restada con exito');
 };
 

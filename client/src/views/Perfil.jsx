@@ -9,6 +9,7 @@ const Perfil = () => {
   const { usuario } = useContext(MyContext);
   const navigate = useNavigate();
 
+  // Debe estar con sesion iniciada para entrar a esta view (por si tipea la url a mano)
   const usuarioSinIniciarSesion = () => {
     if (!localStorage.getItem('token')) {
       navigate('/error');

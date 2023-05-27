@@ -50,7 +50,7 @@ function App() {
             <Route path='/' element={<NewHome />} />
             <Route path='/registrar' element={<Registrar />} />
             <Route path='/login' element={<Login />} />
-            <Route path='/carrito' element={<Carrito />} />
+            <Route path='/carrito/:id_usuario' element={<Carrito />} />
             <Route path='/perfil' element={<Perfil />} />  
             <Route path='/productos' element={<Productos />} />  
             <Route path='/subir' element={<CrearProducto />} />  

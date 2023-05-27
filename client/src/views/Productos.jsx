@@ -10,6 +10,17 @@ import { useContext } from 'react';
 const Productos = () => {
   const { market, usuario } = useContext(MyContext);
 
+  // Debe estar con sesion iniciada para entrar a esta view (por si tipea la url a mano)
+  const usuarioSinIniciarSesion = () => {
+    if (!localStorage.getItem('token')) {
+      navigate('/error');
+    }
+  };
+
+  useEffect(() => {
+    usuarioSinIniciarSesion();
+  }, []);
+
   const productosFiltrados = market.filter(
     (prod) => prod.id_usuario === usuario.id_usuario
   );
