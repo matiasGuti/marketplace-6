@@ -12,6 +12,7 @@ import NewHome from './views/NewHome';
 import Perfil from './views/Perfil';
 import Pagina404 from './views/Pagina404'
 import Productos from './views/Productos';
+import CrearProducto from './views/CrearProducto';
 
 //Components
 import Navbar2 from './components/Navbar2';
@@ -52,9 +53,10 @@ function App() {
             <Route path='/' element={<NewHome />} />
             <Route path='/registrar' element={<Registrar />} />
             <Route path='/login' element={<Login />} />
-            <Route path='/carrito' element={<Carrito />} />
+            <Route path='/carrito/:id_usuario' element={<Carrito />} />
             <Route path='/perfil' element={<Perfil />} />  
             <Route path='/productos' element={<Productos />} />  
+            <Route path='/subir' element={<CrearProducto />} />  
             <Route path='*' element={<Pagina404 />}/>          
           </Routes>
 

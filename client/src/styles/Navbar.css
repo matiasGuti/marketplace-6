@@ -31,6 +31,20 @@
   background-color: tomato;
   color: white;
   font-weight: 500;
+  transition: 0.5s ease;
+}
+
+.btn-cerrar-session:hover {
+  transform: scale(1.1);
+}
+
+.carro-navbar {
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.carro-navbar:hover {
+  transform: scale(1.4);
 }
 
 @media screen and (max-width: 992px) {
