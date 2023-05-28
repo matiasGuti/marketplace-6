@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* .card {
   width: 300px;
   border: 1px solid #ccc;
@@ -87,3 +88,16 @@
     background-color: #d62828;
    
   }  
+=======
+.container-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardUno-img {
+    height: auto;
+    width: 100%;
+}
+
+>>>>>>> b8fcd3de25cee3de287f1ebbee312562e5414e2f

@@ -19,6 +19,34 @@
   color: grey;
 }
 
+.bienvenido {
+  color: white;
+}
+
+.btn-cerrar-session {
+  border-radius: 2px;
+  border: none;
+  font-size: 16px;
+  padding: 1px 4px;
+  background-color: tomato;
+  color: white;
+  font-weight: 500;
+  transition: 0.5s ease;
+}
+
+.btn-cerrar-session:hover {
+  transform: scale(1.1);
+}
+
+.carro-navbar {
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.carro-navbar:hover {
+  transform: scale(1.4);
+}
+
 @media screen and (max-width: 992px) {
   .nav-container {
     gap: 10px;

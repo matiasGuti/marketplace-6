@@ -39,7 +39,7 @@ const crearTablaCarro = async () => {
   await client.connect();
   try {
     const consulta =
-      'create table carro (id_carro serial primary key, cantidad_total int, precio_total int, id_producto int references productos(id_producto))';
+      'create table carro (id_carro serial primary key, cantidad_total int, precio_total int, id_producto int references productos(id_producto), id_usuario int references usuarios(id_usuario))';
     const results = await client.query(consulta);
     console.log(results);
   } catch (err) {
@@ -118,13 +118,13 @@ const eliminarTablaFavoritos = async () => {
 
 // crearTablaUsuarios();
 // crearTablaProductos();
-// crearTablaCarro();
-crearTablaFavoritos();
+ crearTablaCarro();
+//crearTablaFavoritos();
 
 //En caso de botar
 // eliminarTablaUsuarios();
 // eliminarTablaProducto();
-// eliminarTablaCarro();
+//eliminarTablaCarro();
 // eliminarTablaFavoritos();
 
 

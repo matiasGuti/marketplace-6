@@ -26,7 +26,7 @@ const Productos = () => {
   );
 
   return (
-    <Container className='text-center'>
+    <Container fluid>
       <h1>Productos</h1>
       <Row>
         <Col>
