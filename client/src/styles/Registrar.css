@@ -46,14 +46,36 @@
   font-weight: 500;
 }
 
-.btn-registro:hover {
-  background-color: #186d14;
+.input-container {
+  width: 30%; /* Tamaño inicial del 10% */
+  transition: width 0.3s ease; /* Transición suave */
 }
+
+.input-container:hover {
+  width: 100%; /* Tamaño final del 100% al pasar el mouse*/ 
+}
+
+
+ .btn-registro:hover {
+  background-color: #186d14;
+  border-radius: 60px;
+  transform: scale(1.4);
+
+} 
+
+.btn-registro-agrandable {
+  transition: transform 0.3s;
+}
+
+
+
 
 @media screen and (max-width: 1023px) {
   .container-registro {
     width: 80%;
   }
 }
+
+
 
 

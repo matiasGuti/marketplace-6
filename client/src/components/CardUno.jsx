@@ -1,12 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import ListGroup from 'react-bootstrap/ListGroup';
 import MyContext from '../my-context';
-import Container from 'react-bootstrap/Container';
+import Card from 'react-bootstrap/Card';
+
+import '../styles/CardUno.css'
 
 function CardUno() {
   const { market } = useContext(MyContext);
@@ -15,42 +12,24 @@ function CardUno() {
   console.log(market);
 
   return (
-    <Container className='container bg-success m-6'>
-      <Row md={2} lg={3} className='g-5 m-5'>
-        {market.map((producto) => (
-          <Col className='d-flex justify-content-center' key={producto.id_producto}>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img src={producto.imagen} />
-              <Card.Body>
-                <Card.Title className='text-center'>{`${producto.titulo}`}</Card.Title>
-              </Card.Body>
-              <ListGroup className='list-group-flush'></ListGroup>
-              <Card.Body>
-                <h3 className='text-center'>$ {`${producto.precio}`}</h3>
-                <Row className='d-flex flex-column text-center'>
-                  <Col>
-                    <Button
-                      variant='outline-success m-1'
-                      onClick={() => navigate(`/producto/${producto.id_producto}`)}
-                    >
-                      Ver más
-                    </Button>
-                  </Col>
-                  <Col>
-                    <Button variant='outline-success m-1'>
-                      Añadir al carro
-                    </Button>
-                  </Col>
-                  <Col>
-                    <Button variant='outline-success m-1'>Favorito</Button>
-                  </Col>
-                </Row>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    
+
+<div class="card">
+<Card.Img variant="top" src="https://placedog.net/500" />
+    <div class="card-info">
+      <h3>Título de la tarjeta</h3>
+      <p>Precio: $19.99</p>
+      <p>Descripción de la tarjeta</p>
+      <div class="card-buttons">
+        <button>Comprar</button>
+        <button>Agregar al carrito</button>
+        <button>Favorito</button>
+      </div>
+    </div>
+  </div>
+      
+
+   
   );
 }
 
