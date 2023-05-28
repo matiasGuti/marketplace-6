@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import MyContext from '../my-context';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 
 function CardUno({ market }) {
   const navigate = useNavigate();
