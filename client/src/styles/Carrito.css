@@ -1,27 +1,3 @@
-<<<<<<< HEAD
-.crear-producto-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-  }
-  
-  .crear-producto-container > h2 {
-    font-size: 30px;
-    margin: 40px 20px 10px 20px;
-    text-align: center;
-  }
-  
-  .form-container-subir {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-  }
-=======
 .cart-items-container {
   margin-top: 80px;
   display: flex;
@@ -122,4 +98,3 @@
 .pay-btn:hover {
   background-color: green;
 }
->>>>>>> b8fcd3de25cee3de287f1ebbee312562e5414e2f
