@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 
 import '../styles/CardUno.css'
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+
 import { Container } from 'react-bootstrap';
 
 import '../styles/CardUno.css'
