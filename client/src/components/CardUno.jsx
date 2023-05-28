@@ -57,8 +57,8 @@ function CardUno({ market }) {
   return (
     market &&
     market.map((producto) => (
-      <Container className=' d-flex p-3 mb-4'>
-        <Card key={producto.id_producto} style={{ width: '20rem' }} className='p-3 m-1' >
+      <div className='container-card'>
+        <Card key={producto.id_producto} style={{ width: '20rem' }} className='p-1 m-1' >
           <Card.Img variant='top' src={producto.imagen} className='cardUno-img' />
           <Card.Body>
             <Card.Title>{producto.titulo}</Card.Title>
@@ -72,7 +72,7 @@ function CardUno({ market }) {
             <Button variant="outline-success">Favorito</Button>
           </Card.Body>
         </Card>
-      </Container>
+      </div>
     ))
   );
 }

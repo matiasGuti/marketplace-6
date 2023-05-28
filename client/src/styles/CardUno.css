@@ -1,5 +1,11 @@
+.container-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .cardUno-img {
-    object-fit: cover;
-    height: 40vh;
+    height: auto;
     width: 100%;
 }
+
