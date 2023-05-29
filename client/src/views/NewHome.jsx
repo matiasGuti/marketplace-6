@@ -13,7 +13,7 @@ import '../styles/NewHome.css'
 
 function NewHome() {
   const { market } = useContext(MyContext);
-
+  
   return (
     <>
       <div className='cards-container'>
@@ -25,3 +25,4 @@ function NewHome() {
 }
 
 export default NewHome;
+

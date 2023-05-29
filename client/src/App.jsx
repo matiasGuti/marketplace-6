@@ -9,7 +9,8 @@ import Carrito from './views/Carrito';
 import Registrar from './views/Registrar';
 import Login from './views/Login';
 import NewHome from './views/NewHome';
-import Perfil from './views/Perfil';
+import Perfil from './views/perfil';
+
 import Pagina404 from './views/Pagina404';
 import Productos from './views/Productos';
 import CrearProducto from './views/CrearProducto';
@@ -47,7 +48,6 @@ function App() {
       <MyContext.Provider value={globalState}>
         <BrowserRouter>
           <Navbar2 />
-
           <Routes>
             <Route path='/' element={<NewHome />} />
             <Route path='/registrar' element={<Registrar />} />
