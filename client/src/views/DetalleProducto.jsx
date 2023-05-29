@@ -8,6 +8,7 @@ import '../styles/DetalleProducto.css';
 
 function DetalleProducto() {
   const [productoActual, setProductoActual] = useState(null);
+  const [esDueño, setEsDueño] = useState(false);
   const [loading, setLoading] = useState(true);
   const { id_producto } = useParams();
   const { usuario, market } = useContext(MyContext);
@@ -30,6 +31,18 @@ function DetalleProducto() {
 
     filtrarProducto();
   }, []);
+
+  useEffect(() => {
+    const revisarSiEsDueño = async () => {
+      try {
+        if (usuario.id_usuario == productoActual.id_usuario) setEsDueño(true);
+      } catch (err) {
+        //console.log('cargando productos...');
+      }
+    };
+
+    revisarSiEsDueño();
+  }, [productoActual]);
 
   const agregarAlCarro = async (producto) => {
     // Revisar si inicio sesion, sino se manda a iniciar sesion
@@ -74,6 +87,24 @@ function DetalleProducto() {
     }
   };
 
+  const eliminarProducto = async (producto) => {
+    const urlServidor = 'http://localhost:3000';
+    const endpoint = `/productos/${producto.id_producto}`;
+
+    const requestBody = {
+      id_usuario: usuario.id_usuario,
+    };
+
+    try {
+      await axios.delete(urlServidor + endpoint, { data: requestBody });
+      alert('Producto eliminado exitosamente');
+      navigate('/');
+      window.location.reload(false);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <>
       {loading && <p>Cargando...</p>}
@@ -94,10 +125,27 @@ function DetalleProducto() {
               Precio: ${productoActual.precio.toLocaleString('es-CL')}
             </p>
             <div className='producto-view-detail-price-container'>
-              <button className='fav-producto-detail-button'>
-                A Favoritos
-              </button>
-              <button className='cart-producto-detail-button' onClick={() => agregarAlCarro(productoActual)}>Añadir 🛒</button>
+              {!esDueño && (
+                <button className='fav-producto-detail-button'>
+                  A Favoritos
+                </button>
+              )}
+              {!esDueño && (
+                <button
+                  className='cart-producto-detail-button'
+                  onClick={() => agregarAlCarro(productoActual)}
+                >
+                  Añadir 🛒
+                </button>
+              )}
+              {esDueño && (
+                <button
+                  className='delete-producto-detail-button'
+                  onClick={() => eliminarProducto(productoActual)}
+                >
+                  Eliminar producto
+                </button>
+              )}
             </div>
           </div>
         </div>

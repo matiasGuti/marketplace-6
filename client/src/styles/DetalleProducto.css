@@ -72,6 +72,24 @@
   background-color: crimson;
 }
 
+.delete-producto-detail-button {
+  width: 100%;
+  padding: 3px 10px;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: red;
+  text-align: center;
+  transition: 0.5s ease;
+}
+
+.delete-producto-detail-button:hover {
+  background-color: darkred;
+}
+
 .cart-producto-detail-button:hover {
   background-color:rgb(112, 14, 33);
 }

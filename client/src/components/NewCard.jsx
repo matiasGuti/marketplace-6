@@ -1,9 +1,18 @@
 import CardProducto from './CardProducto';
 
 function NewCard({ market }) {
+
+  const dataFormateada = market.map((item) => {
+    return {
+      ...item,
+      precio: Number(item.precio)
+    };
+  });
+
+
   return (
-    market &&
-    market.map((producto) => (
+    dataFormateada &&
+    dataFormateada.map((producto) => (
       <CardProducto producto={producto} key={producto.id_producto} />
     ))
   );
