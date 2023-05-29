@@ -5,6 +5,10 @@ import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 
+import '../styles/CardUno.css';
+import { Container } from 'react-bootstrap';
+
+
 function CardUno({ market }) {
   const navigate = useNavigate();
   const { usuario } = useContext(MyContext);
@@ -53,29 +57,28 @@ function CardUno({ market }) {
   };
 
   return (
-    
-    
+
+
     market &&
     market.map((producto) => (
-      <Card key={producto.id_producto} style={{ width: '18rem' }}>
-        <Card.Img variant='top' src={producto.imagen} />
+      <Card key={producto.id_producto} className='d-inline-flex p-5 justify-content-around'>
+        <Card.Img variant='top' src={producto.imagen} className='cardUno-img' />
         <Card.Body>
           <Card.Title>{producto.titulo}</Card.Title>
           <Card.Text>{producto.precio}</Card.Text>
           <Button
-            variant='primary'
-            onClick={() => navigate(`/producto/${producto.id_producto}`)}
-          >
+            variant="outline-success"
+            onClick={() => navigate(`/producto/${producto.id_producto}`)}>
             Detalles
           </Button>
-          <Button variant='primary' onClick={() => agregarAlCarro(producto)}>
+          <Button variant="outline-success" onClick={() => agregarAlCarro(producto)}>
             Al Carro
           </Button>
-          <Button variant='primary'>Favorito</Button>
+          <Button variant="outline-success">Favorito</Button>
         </Card.Body>
       </Card>
     ))
-  
+
 
   );
 }

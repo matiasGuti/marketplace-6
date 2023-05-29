@@ -13,7 +13,7 @@ function NewHome() {
     <Container className='text-center'>
       <Row>
         <Col>
-          <CardUno market={market} />
+          <CardUno market={market}/>
         </Col>
       </Row>
       <Footer />
@@ -22,3 +22,4 @@ function NewHome() {
 }
 
 export default NewHome;
+

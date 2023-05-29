@@ -48,7 +48,6 @@ function App() {
       <MyContext.Provider value={globalState}>
         <BrowserRouter>
           <Navbar2 />
-
           <Routes>
             <Route path='/' element={<NewHome />} />
             <Route path='/registrar' element={<Registrar />} />

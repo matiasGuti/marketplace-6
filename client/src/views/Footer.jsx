@@ -12,20 +12,20 @@ const Footer = () => {
         <div class="col-lg-4">
           <h2 class="fw-normal">Matias</h2>
           <img className='imgFooter' src={imagen} alt="96841538.png" />
-          <p>Ingeniero de civil industrial, xx años, actual estidiante de Desafiolatam</p>
+          <p>Ingeniero civil industrial. Actual estudiante de Desafiolatam.</p>
         </div>
 
 
         <div class="col-lg-4">
           <h2 class="fw-normal">Felo</h2>
           <img className='imgFooter' src={imagen2} alt="106690319.jpg" />
-          <p>Musico profecional, xx años, actual estidiante de Desafiolatam</p>
+          <p>Músico. Actual estudiante de Desafiolatam.</p>
         </div>
 
         <div class="col-lg-4">
           <h2 class="fw-normal">Daniel</h2>
           <img className='imgFooter' src={imagen3} alt="104594603.jpg" />
-          <p>Ingeniero en maquinaria y vehiculos automotrices, 38 años, actual estidiante de Desafiolatam</p>
+          <p>Ingeniero en maquinaria y vehículos automotrices. Actual estudiante de Desafiolatam.</p>
         </div>
       </div>
 
