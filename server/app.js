@@ -96,10 +96,11 @@ app.post('/productos', async (req, res) => {
   }
 });
 
-app.delete('/productos/:id', async (req, res) => {
+app.delete('/productos/:id_producto', async (req, res) => {
   try {
-    const { id } = req.params;
-    await eliminarProducto(id);
+    const { id_producto } = req.params;
+    const { id_usuario } = req.body;
+    await eliminarProducto(id_producto, id_usuario);
     res.send('Producto eliminado con exito');
   } catch (err) {
     res.status(error.code || 500).send(err);
