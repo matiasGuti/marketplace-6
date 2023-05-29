@@ -1,29 +1,80 @@
-import Card from 'react-bootstrap/Card';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import MyContext from '../my-context';
 import Button from 'react-bootstrap/Button';
-import { Container } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import axios from 'axios';
+import '../styles/CardProducto.css';
 
+//Estilos
 import '../styles/CardProducto.css'
 
-function CardProducto() {
+function CardProducto({ producto }) {
+  const navigate = useNavigate();
+  const { usuario } = useContext(MyContext);
+
+  const agregarAlCarro = async (producto) => {
+    // Revisar si inicio sesion, sino se manda a iniciar sesion
+    if (!localStorage.getItem('token')) {
+      navigate('/login');
+      return;
+    }
+
+    const urlServidor = 'http://localhost:3000';
+    const endpoint = '/carro';
+
+    // Revisar si el usuario ya tiene el producto en su carro
+    try {
+      const endpointMasQuery = `/check_carro?id_usuario=${usuario.id_usuario}&id_producto=${producto.id_producto}`;
+      var { data: productoExiste } = await axios.get(
+        urlServidor + endpointMasQuery
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+
+    const informacionProducto = {
+      id_usuario: usuario.id_usuario,
+      precio: producto.precio,
+      id_producto: producto.id_producto,
+    };
+
+    // Reviso primero si el producto ya esta agregado al carro, en ese caso sumo uno a la cantidad
+    if (productoExiste) {
+      const endpointSumar = '/sumar_uno';
+
+      await axios.post(urlServidor + endpointSumar, informacionProducto);
+      alert('Producto agregado al carro');
+    } else {
+      // En caso contrario agrego el producto al carro
+      try {
+        await axios.post(urlServidor + endpoint, informacionProducto);
+        alert('Producto agregado al carro');
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+  };
+
   return (
-    <Container className='text-center d-flex justify-content-center  mb-1 p-4'>
-      <Card style={{ width: '40rem' }} className='p-3 m-1'>
-      <Card.Body >
-          <Card.Text>Titulo</Card.Text>
-        </Card.Body>
-        <Card.Img variant="top" src="https://placedog.net/501" className='cardProducto-img' />
-        <Card.Body>
-          <Card.Text>DescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripciónDescripción</Card.Text>
-        </Card.Body>
-        <Card.Body>
-          <Card.Text>Precio</Card.Text>
-        </Card.Body>
-        <Button variant="outline-success">A Favoritos</Button>{' '}
-        <br/>
-        <Button variant="outline-success">Añadir al carro</Button>{' '}
-      </Card>
-      <br />
-    </Container>
+    <Card className='card-container' key={producto.id_producto} style={{ width: '18rem' }}>
+      <Card.Img className='card-img' variant='top' src={producto.imagen} />
+      <Card.Body className='card-content-container'>
+        <Card.Title>{producto.titulo}</Card.Title>
+        <Card.Text>{producto.precio}</Card.Text>
+        <Card.Text>AAAA</Card.Text>
+        <Button
+          variant='primary'
+          onClick={() => navigate(`/producto/${producto.id_producto}`)}
+        >
+          Detalles
+        </Button>
+        <Button variant='primary' onClick={() => agregarAlCarro(producto)}>
+          Al Carro
+        </Button>
+        <Button variant='primary'>Favorito</Button>
+      </Card.Body>
+    </Card>
   );
 }
 

@@ -13,10 +13,10 @@ import Perfil from './views/Perfil';
 import Pagina404 from './views/Pagina404';
 import Productos from './views/Productos';
 import CrearProducto from './views/CrearProducto';
+import DetalleProducto from './views/DetalleProducto';
 
 //Components
 import Navbar2 from './components/Navbar2';
-import CardProducto from './components/CardProducto';
 
 // Estilos
 import './App.css';
@@ -55,7 +55,7 @@ function App() {
             <Route path='/carrito/:id_usuario' element={<Carrito />} />
             <Route path='/perfil' element={<Perfil />} />
             <Route path='/productos' element={<Productos />} />
-            <Route path='/producto/:id_producto' element={<CardProducto />} />
+            <Route path='/producto/:id_producto' element={<DetalleProducto />} />
             <Route path='/subir' element={<CrearProducto />} />
             <Route path='*' element={<Pagina404 />} />
           </Routes>
