@@ -1,9 +1,4 @@
 import NewCard from '../components/NewCard';
-import Footer from './Footer';
-
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import MyContext from '../my-context';
 import { useContext, useEffect } from 'react';
 
@@ -30,7 +25,6 @@ const Productos = () => {
       <div className='cards-container'>
         <NewCard market={productosFiltrados} />
       </div>
-      <Footer />
     </>
   );
 };

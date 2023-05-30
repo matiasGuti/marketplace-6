@@ -42,9 +42,18 @@ const eliminarFavorito = async (id_usuario, id_producto) => {
   console.log('Producto eliminado de favoritos con exito');
 };
 
+const eliminarFavoritoTotal = async (id_producto) => {
+  const consulta =
+    'DELETE FROM favoritos WHERE id_producto = $1';
+  const valor = [id_producto];
+  const result = await pool.query(consulta, valor);
+  console.log('Producto eliminado de favoritos con exito');
+};
+
 module.exports = {
   obtenerFavoritosUsuario,
   revisarSiProductoYaAgregado,
   agregarAFavorito,
   eliminarFavorito,
+  eliminarFavoritoTotal
 };
