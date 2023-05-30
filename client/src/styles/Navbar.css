@@ -52,3 +52,17 @@
     gap: 10px;
   }
 }
+
+.botonCerrar{
+  padding-left: 5px;
+  padding-right: 5px;
+  color: beige;
+  background-color: #003049;
+  border-radius: 30px;
+  transition: box-shadow 0.5s ease; 
+}
+
+.botonCerrar:hover {
+  box-shadow: 0px 4px 6px rgba(254, 253, 253, 0.984);
+} 
+

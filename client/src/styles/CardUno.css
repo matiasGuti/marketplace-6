@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-.card {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin: 25px;
-    color: white;
-    justify-content:space-between;
-    box-shadow:  2px 5px 15px 0px #ffffff, 5px 5px 15px 5px rgba(251, 249, 249, 0);
-}
-.card button {
-    width: 100%;
-    border: none;
-    padding: 5px;
-    
-}
-=======
 /* .card {
   width: 300px;
   border: 1px solid #ccc;
@@ -110,4 +93,3 @@
     height: 100%;
     width: 100%;
 }
->>>>>>> 1f64c34ba0de4ff056c4117d2f165e6f5883fda2

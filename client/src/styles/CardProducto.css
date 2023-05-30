@@ -1,48 +1,33 @@
-<<<<<<< HEAD
-.card {
-    margin: 30px;
-    color: rgb(3, 0, 6);
-    display: flex;
-    flex-direction: row;
-    
-    box-shadow: 5px 20px 15px 0px #060000, 5px 5px 15px 5px rgba(251, 249, 249, 0);
-    transition: transform 0.3s ease;
-    border: none;
-}
-.card:hover {
-    transform: scale(1.3);
-}
-
-.card button {
-    width: 100%;
-    margin: 2px;
-    padding: 5px;
-    transition: transform 0.3s ease;
-}
-
-
-
-
-.card button:hover{
-    transform: scale(1.5);
-    
-}
-
-
-=======
 .card-content-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  
 }
 
 .card-img {
-  width: 100%;
-  height: 100%;
   object-fit: contain;
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 }
->>>>>>> 1f64c34ba0de4ff056c4117d2f165e6f5883fda2
+
+.card-container {
+box-shadow: 5px 20px 15px 0px black, 5px 5px 15px 5px black;
+border: none;
+transition: transform 0.3s;
+
+
+}
+
+.card-container:hover {
+    transform: scale(1.1);
+}
+
+/* button{
+  box-shadow: 0px 4px 6px #002437;
+  border: none !important;
+  
+} */

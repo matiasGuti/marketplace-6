@@ -89,7 +89,7 @@ function Navbar2() {
               </Link>
             )}
             {sesionIniciada && (
-              <button className='btn-cerrar-session' onClick={cerrarSesion}>
+              <button className='botonCerrar' onClick={cerrarSesion}>
                 Cerrar Sesion
               </button>
             )}

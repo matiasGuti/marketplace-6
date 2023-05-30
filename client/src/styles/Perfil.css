@@ -5,33 +5,45 @@
     align-items: center;
     margin: 40px 10px;
     gap: 40px;
+    
   }
   
   .perfil-container > h2 {
     font-size: 40px;
     text-align: center;
     font-weight: 700;
+    
   }
   
   .opciones-perfil {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 40px;
+    gap: 60px;
+    
+    
   }
-  
+ 
   .opciones-perfil > div {
     border-radius: 5px;
     padding: 40px 60px;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow:  10px 10px 20px 10px black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    background-color: #eee;
+    background-color: #003049;
+    transition: box-shadow 0.3s ease; 
+    color: whitesmoke;
   }
+
+  
+  .opciones-perfil:hover > div {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+  } 
+  
   
   .titulo-perfil {
     font-size: 30px;
@@ -39,16 +51,21 @@
   
   .btn-perfil {
     text-decoration: none;
-    color: white;
+    color: black;
     border-radius: 4px;
     padding: 5px 40px;
     cursor: pointer;
-    background-color: darkred;
+    background-color: #fbf9f9;
+    transition: transform 0.1s;
+    
   }
-  
+
+    
   .btn-perfil:hover{
-      background-color: rgb(74, 11, 11);
-      color: white;
+      background-color: #d62828;
+      color: rgb(251, 252, 250);
+      transform: scale(1.2);
+      border-radius: 25px;
   }
   
   @media screen and (min-width: 992px) {

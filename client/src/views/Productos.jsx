@@ -28,10 +28,6 @@ const Productos = () => {
       <div className='cards-container'>
         <NewCard market={productosFiltrados} />
       </div>
-<<<<<<< HEAD
-      
-=======
->>>>>>> 68ce54f25e18b6e026d67a321c9938b47321a8f0
     </>
   );
 };
