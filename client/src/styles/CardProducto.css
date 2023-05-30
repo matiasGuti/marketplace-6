@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .card {
     margin: 30px;
     color: rgb(3, 0, 6);
@@ -28,3 +29,20 @@
 }
 
 
+=======
+.card-content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+>>>>>>> 1f64c34ba0de4ff056c4117d2f165e6f5883fda2

@@ -32,7 +32,7 @@ function Login() {
       localStorage.setItem('token', token);
       setUsuario();
       navigate('/');      
-      window.location.reload()
+      window.location.reload(false)
     } catch (error) {
       if (error.message.includes('code 500')) {
         alert('Porfavor ingresar contraseñas validas');

@@ -36,6 +36,7 @@ function Navbar2() {
       alert('Has cerrado sesion');
       setSesionIniciada(false);
       navigate('/');
+      window.location.reload(false)
     } catch (error) {
       console.log(error.message);
     }
