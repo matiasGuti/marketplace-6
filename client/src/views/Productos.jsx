@@ -1,5 +1,4 @@
 import NewCard from '../components/NewCard';
-import Footer from './Footer';
 import MyContext from '../my-context';
 import { useContext, useEffect } from 'react';
 
@@ -29,7 +28,7 @@ const Productos = () => {
       <div className='cards-container'>
         <NewCard market={productosFiltrados} />
       </div>
-      <Footer />
+      
     </>
   );
 };
