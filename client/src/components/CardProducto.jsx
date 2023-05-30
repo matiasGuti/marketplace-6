@@ -10,10 +10,39 @@ import '../styles/CardProducto.css';
 import '../styles/CardProducto.css';
 import { Container } from 'react-bootstrap';
 
-function CardProducto({ producto }) {
+function CardProducto({ producto, paginaFav }) {
   const [esDueño, setEsDueño] = useState(false);
+  const [esFavorito, setEsFavorito] = useState(false);
   const navigate = useNavigate();
   const { usuario } = useContext(MyContext);
+
+  useEffect(() => {
+    const revisarSiEsDueño = async () => {
+      try {
+        if (usuario.id_usuario == producto.id_usuario) setEsDueño(true);
+      } catch (err) {
+        //console.log('cargando productos...');
+      }
+    };
+
+    const revisarSiProductoEnFavoritos = async () => {
+      if(!localStorage.getItem('token') || !usuario) return
+
+      const urlServidor = 'http://localhost:3000';
+      const endpoint = `/favoritos_check?id_usuario=${usuario.id_usuario}&id_producto=${producto.id_producto}`;
+    
+      try {
+        const { data: yaEnFavs } = await axios.get(urlServidor + endpoint)
+        if(yaEnFavs) setEsFavorito(true)
+      } catch(err) {
+        console.log(err.message);
+      }
+
+    }
+
+    revisarSiEsDueño();
+    revisarSiProductoEnFavoritos();
+  }, [usuario]);
 
   const agregarAlCarro = async (producto) => {
     // Revisar si inicio sesion, sino se manda a iniciar sesion
@@ -58,17 +87,51 @@ function CardProducto({ producto }) {
     }
   };
 
-  useEffect(() => {
-    const revisarSiEsDueño = async () => {
-      try {
-        if (usuario.id_usuario == producto.id_usuario) setEsDueño(true);
-      } catch (err) {
-        //console.log('cargando productos...');
-      }
-    };
+  const agregarAFavoritos = async (producto) => {
+    // Revisar si inicio sesion, sino se manda a iniciar sesion
+    if (!localStorage.getItem('token')) {
+      navigate('/login');
+      return;
+    }
 
-    revisarSiEsDueño();
-  }, [usuario]);
+    const urlServidor = 'http://localhost:3000';
+
+    // Revisar si el producto ya esta agregado como favorito
+    if (esFavorito) {
+      try {
+        const endpoint = `/favoritos/${producto.id_producto}`;
+
+        const requestBody = {
+          id_usuario: usuario.id_usuario,
+        };
+  
+        try {
+          await axios.delete(urlServidor + endpoint, { data: requestBody });
+          setEsFavorito(false)
+          if(paginaFav) window.location.reload(false)
+        } catch (err) {
+          console.log(err.message);
+        }        
+      } catch (err) {
+        console.log(err.message);
+      }
+    } else {
+      try {   
+        const endpoint = '/favoritos';
+
+        const requestBody = {
+          id_usuario: usuario.id_usuario,
+          id_producto: producto.id_producto
+        }
+
+        await axios.post(urlServidor + endpoint, requestBody)
+
+        setEsFavorito(true)
+      } catch (err) {
+        console.log(err.message);
+      }
+    }
+  };
 
   return (
     <Card
@@ -94,13 +157,13 @@ function CardProducto({ producto }) {
           </Button>
           {!esDueño && (
             <Button
-              variant='outline-success'
+              variant='outline-dark'
               onClick={() => agregarAlCarro(producto)}
             >
               Al Carro
             </Button>
           )}
-          {!esDueño && <Button variant='outline-success'>Favorito</Button>}
+          {!esDueño && <Button variant={esFavorito ? 'warning' : 'outline-warning'} onClick={() => agregarAFavoritos(producto)}>Favorito</Button>}
         </Container>
       </Card.Body>
     </Card>
