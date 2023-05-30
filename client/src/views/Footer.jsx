@@ -6,7 +6,7 @@ import '../styles/FooterUno.css';
 
 const Footer = () => {
   return (
-    <div className='footer'>
+    <div className='footer text-center'>
       <h1>Creadores</h1>
       <div className='row'>
         <div className='col-lg-4'>

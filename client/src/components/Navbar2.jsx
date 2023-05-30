@@ -60,7 +60,7 @@ function Navbar2() {
         <Link className='text-light fs-1 text-bold text-decoration-none' to='/'>
           MarketPlace
         </Link>
-        <Navbar.Toggle aria-controls='navbarScroll' />
+        <Navbar.Toggle aria-controls='navbarScroll' className='bg-light'/>
         <Navbar.Collapse id='navbarScroll'>
           <Nav className='nav-container' navbarScroll>
             {!sesionIniciada && (

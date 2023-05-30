@@ -26,7 +26,6 @@ const Productos = () => {
   );
 
   return (
-<<<<<<< HEAD
     <Container className='text-center'>
       <h1>Mis productos !</h1>
       <Row>
@@ -35,14 +34,6 @@ const Productos = () => {
         </Col>
       </Row>
     </Container>
-=======
-    <>
-      <div className='cards-container'>
-        <NewCard market={productosFiltrados} />
-      </div>
-      <Footer />
-    </>
->>>>>>> a4d046aeceedb612e7b8842de3dae1877684ca84
   );
 };
 
