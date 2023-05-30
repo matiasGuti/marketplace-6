@@ -6,7 +6,7 @@ import '../styles/CardProducto.css'
 
 function CardProducto() {
   return (
-    <Container className='text-center d-flex justify-content-center  mb-1 p-4'>
+    <Container className='container'>
       <Card style={{ width: '40rem' }} className='p-3 m-1'>
       <Card.Body >
           <Card.Text>Titulo</Card.Text>

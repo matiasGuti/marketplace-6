@@ -1,103 +1,15 @@
-<<<<<<< HEAD
-/* .card {
-  width: 300px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  position: relative;
-  box-shadow: 0 2px 18px rgb(253, 252, 252);
-}
-.card img {
-  width: 100%;
-}
-.card-info {
-  display: none;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  padding: 10px;
-}
-.card:hover .card-info {
-  display: block;
-}
-.card-info h3, .card-info p {
-  margin: 0;
-  padding: 0;
-}
-.card-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-.card-buttons button {
-  padding: 5px 10px;
-  background-color: #fff;
-  border: none;
-  cursor: pointer;
-}
-.card-buttons button:hover {
-  background-color: #ddd;
-}
-   */
-
-
-   .card {
-    width: 300px;
-    position: relative;
-    margin: 10px;
-  }
-  .card img {
-    width: 100%;
-    border-radius: 5px;
-    box-shadow: 10px 4px 10px #0a0000;
-  }
-  .card-info {
-    display: none;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #eae2b7;
-    color: #370617;
-    padding: 10px;
-   
-  }
-  .card:hover .card-info {
-    display: block;
-    border-radius: 10px;
-  }
-  .card-info h3, .card-info p {
-    margin: 0;
-    padding: 0;
-  }
-  .card-buttons {
+.card {
     display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-  }
-  .card-buttons button {
-    padding: 5px 10px;
-    background-color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  .card-buttons button:hover {
-    background-color: #d62828;
-   
-  }  
-=======
-.container-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 25px;
+    color: white;
+    justify-content:space-between;
+    box-shadow:  2px 5px 15px 0px #ffffff, 5px 5px 15px 5px rgba(251, 249, 249, 0);
 }
-
-.cardUno-img {
-    height: auto;
+.card button {
     width: 100%;
+    border: none;
+    padding: 5px;
+    
 }
-
->>>>>>> b8fcd3de25cee3de287f1ebbee312562e5414e2f

@@ -1,11 +1,13 @@
 import CardUno from '../components/CardUno';
 import Footer from './Footer';
-
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MyContext from '../my-context';
 import { useContext, useEffect} from 'react';
+
+// Estilos
+import '../styles/CardProducto.css';
 
 const Productos = () => {
   const { market, usuario } = useContext(MyContext);
@@ -26,7 +28,7 @@ const Productos = () => {
   );
 
   return (
-    <Container fluid>
+    <Container className='card' >
       <h1>Productos</h1>
       <Row>
         <Col>

@@ -57,7 +57,7 @@ function CardUno({ market }) {
     
     market &&
     market.map((producto) => (
-      <Card key={producto.id_producto} style={{ width: '18rem' }}>
+      <Card key={producto.id_producto}  style={{ width: '18rem' }}>
         <Card.Img variant='top' src={producto.imagen} />
         <Card.Body>
           <Card.Title>{producto.titulo}</Card.Title>
