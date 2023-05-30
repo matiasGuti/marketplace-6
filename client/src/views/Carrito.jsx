@@ -114,9 +114,9 @@ function Carrito() {
       <h2>Detalles del pedido</h2>
       {loading && <p>Cargando carro...</p>}
       {!loading && (
-        <div className='cart-items'>
+        <div className='cart-items mb-5'>
           {carro.map((producto) => (
-            <div className='item' key={producto.id_producto}>
+            <div className='item flex-wrap' key={producto.id_producto}>
               <div className='item-detail'>
                 <img src={producto.imagen} alt={producto.titulo} />
                 <p>

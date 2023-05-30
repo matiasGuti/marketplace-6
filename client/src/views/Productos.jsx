@@ -26,7 +26,7 @@ const Productos = () => {
 
   return (
     <Container className='text-center'>
-      <h1>Productos</h1>
+      <h1>Mis productos !</h1>
       <Row>
         <Col>
           <CardUno market={productosFiltrados} />

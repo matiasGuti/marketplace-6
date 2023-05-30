@@ -62,7 +62,7 @@ function CardUno({ market }) {
     market &&
     market.map((producto) => (
       <Card key={producto.id_producto} className='d-inline-flex p-5 justify-content-around'>
-        <Card.Img variant='top' src={producto.imagen} className='cardUno-img' />
+        <Card.Img variant='top' src={producto.imagen}/>
         <Card.Body>
           <Card.Title>{producto.titulo}</Card.Title>
           <Card.Text>{producto.precio}</Card.Text>
