@@ -112,6 +112,7 @@ function DetalleProducto() {
     };
 
     try {
+      console.log(urlServidor + endpoint);
       await axios.delete(urlServidor + endpoint, { data: requestBody });
       alert('Producto eliminado exitosamente');
       navigate('/');

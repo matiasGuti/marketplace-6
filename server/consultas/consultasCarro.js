@@ -64,6 +64,14 @@ const restarCantidadProducto = async (precio, id_usuario, id_producto) => {
   console.log('Cantidad restada con exito');
 };
 
+const eliminarProductoDeLosCarros = async (id_producto) => {
+  const consulta =
+  'DELETE FROM carro WHERE id_producto = $1';
+  const valor = [id_producto];
+  const result = await pool.query(consulta, valor);
+  console.log('Producto eliminado de favoritos con exito');
+}
+
 module.exports = {
   obtenerCarroUsuario,
   agregarProductoAlCarro,
@@ -71,4 +79,5 @@ module.exports = {
   sumarCantidadProducto,
   restarCantidadProducto,
   checkProductoAgregado,
+  eliminarProductoDeLosCarros
 };
