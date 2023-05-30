@@ -17,6 +17,7 @@ const {
   restarCantidadProducto,
   checkProductoAgregado,
 } = require('./consultas/consultasCarro');
+const { obtenerFavoritosUsuario, revisarSiProductoYaAgregado, agregarAFavorito, eliminarFavorito } = require('./consultas/consultasFavoritos')
 const { validarToken } = require('./middlewares/middlewares');
 const express = require('express');
 const cors = require('cors');
@@ -30,7 +31,7 @@ app.use(express.json());
 app.use(cors());
 
 // --------------------------- RUTAS ---------------------------
-//Rutas usuarios
+//--------------- Rutas usuarios
 app.post('/usuarios', async (req, res) => {
   try {
     const { nombre, email, password } = req.body;
@@ -75,7 +76,7 @@ app.get('/usu', async (req, res) => {
   }
 });
 
-//Rutas producto
+//--------------- Rutas producto
 app.get('/productos', async (req, res) => {
   try {
     const productos = await obtenerProductos();
@@ -107,7 +108,7 @@ app.delete('/productos/:id_producto', async (req, res) => {
   }
 });
 
-//Rutas carro
+//--------------- Rutas carro
 app.get('/carro/:id_usuario', async (req, res) => {
   try {
     const { id_usuario } = req.params;
@@ -130,35 +131,35 @@ app.post('/carro', async (req, res) => {
 
 app.get('/check_carro', async (req, res) => {
   try {
-    const queryStrings = req.query
-    const resultado = await checkProductoAgregado(queryStrings)
-    res.send(resultado)
-  } catch(error) {
+    const queryStrings = req.query;
+    const resultado = await checkProductoAgregado(queryStrings);
+    res.send(resultado);
+  } catch (error) {
     res.status(error.code || 500).send(error);
   }
-})
+});
 
 //Sumar uno a la cantidad
 app.post('/sumar_uno', async (req, res) => {
   try {
-    const { id_usuario, precio, id_producto } = req.body
-    await sumarCantidadProducto(precio, id_usuario, id_producto)
-    res.send('Cantidad aumentada con exito')
+    const { id_usuario, precio, id_producto } = req.body;
+    await sumarCantidadProducto(precio, id_usuario, id_producto);
+    res.send('Cantidad aumentada con exito');
   } catch (err) {
     res.status(err.code || 500).send(err);
   }
-})
+});
 
 //Restar uno a la cantidad
-app.post('/restar_uno', async(req, res) => {
+app.post('/restar_uno', async (req, res) => {
   try {
-    const { id_usuario, precio, id_producto } = req.body
-    await restarCantidadProducto(precio, id_usuario, id_producto)
-    res.send('Cantidad restada con exito')
+    const { id_usuario, precio, id_producto } = req.body;
+    await restarCantidadProducto(precio, id_usuario, id_producto);
+    res.send('Cantidad restada con exito');
   } catch (err) {
     res.status(err.code || 500).send(err);
   }
-})
+});
 
 //Borrar producto del carro
 app.delete('/carro/:id_producto', async (req, res) => {
@@ -167,6 +168,48 @@ app.delete('/carro/:id_producto', async (req, res) => {
     const { id_usuario } = req.body;
     await eliminarProductoDelCarro(id_usuario, id_producto);
     res.send('Producto eliminado del carro con exito');
+  } catch (err) {
+    res.status(error.code || 500).send(err);
+  }
+});
+
+//--------------- Rutas Favoritos
+app.get('/favoritos/:id_usuario', async (req, res) => {
+  try {
+    const { id_usuario } = req.params;
+    const favoritos = await obtenerFavoritosUsuario(id_usuario)
+    res.json(favoritos)
+  } catch (err) {
+    res.status(err.code || 500).send(err);
+  }
+})
+
+app.get('/favoritos_check', async (req, res) => {
+  try {
+    const queryStrings = req.query;
+    const resultado = await revisarSiProductoYaAgregado(queryStrings)
+    res.send(resultado)
+  } catch (err) {
+    res.status(err.code || 500).send(err);
+  }
+})
+
+app.post('/favoritos', async (req, res) => {
+  try {
+    const { id_usuario, id_producto } = req.body;
+    await agregarAFavorito(id_usuario, id_producto)
+    res.send('Producto agregado a favoritos exitosamente')
+  } catch (err) {
+    res.status(err.code || 500).send(err);
+  }
+});
+
+app.delete('/favoritos/:id_producto', async (req, res) => {
+  try {
+    const { id_producto } = req.params;
+    const { id_usuario } = req.body;
+    await eliminarFavorito(id_usuario, id_producto);
+    res.send('Producto eliminado de favoritos');
   } catch (err) {
     res.status(error.code || 500).send(err);
   }

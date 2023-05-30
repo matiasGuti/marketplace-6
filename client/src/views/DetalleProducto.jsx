@@ -10,6 +10,7 @@ function DetalleProducto() {
   const [productoActual, setProductoActual] = useState(null);
   const [esDueño, setEsDueño] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [esFavorito, setEsFavorito] = useState(false)
   const { id_producto } = useParams();
   const { usuario, market } = useContext(MyContext);
   const navigate = useNavigate();
@@ -41,7 +42,22 @@ function DetalleProducto() {
       }
     };
 
+    const revisarSiProductoEnFavoritos = async () => {
+      if(!localStorage.getItem('token') || !usuario) return
+
+      const urlServidor = 'http://localhost:3000';
+      const endpoint = `/favoritos_check?id_usuario=${usuario.id_usuario}&id_producto=${id_producto}`;
+    
+      try {
+        const { data: yaEnFavs } = await axios.get(urlServidor + endpoint)
+        if(yaEnFavs) setEsFavorito(true)
+      } catch(err) {
+        //console.log(err.message);
+      }
+    }
+
     revisarSiEsDueño();
+    revisarSiProductoEnFavoritos()
   }, [productoActual]);
 
   const agregarAlCarro = async (producto) => {
@@ -105,6 +121,51 @@ function DetalleProducto() {
     }
   };
 
+  const agregarAFavoritos = async (producto) => {
+    // Revisar si inicio sesion, sino se manda a iniciar sesion
+    if (!localStorage.getItem('token')) {
+      navigate('/login');
+      return;
+    }
+
+    const urlServidor = 'http://localhost:3000';
+
+    // Revisar si el producto ya esta agregado como favorito
+    if (esFavorito) {
+      try {
+        const endpoint = `/favoritos/${producto.id_producto}`;
+
+        const requestBody = {
+          id_usuario: usuario.id_usuario,
+        };
+  
+        try {
+          await axios.delete(urlServidor + endpoint, { data: requestBody });
+          setEsFavorito(false)
+        } catch (err) {
+          console.log(err.message);
+        }        
+      } catch (err) {
+        console.log(err.message);
+      }
+    } else {
+      try {   
+        const endpoint = '/favoritos';
+
+        const requestBody = {
+          id_usuario: usuario.id_usuario,
+          id_producto: producto.id_producto
+        }
+
+        await axios.post(urlServidor + endpoint, requestBody)
+
+        setEsFavorito(true)
+      } catch (err) {
+        console.log(err.message);
+      }
+    }
+  };
+
   return (
     <>
       {loading && <p>Cargando...</p>}
@@ -126,7 +187,7 @@ function DetalleProducto() {
             </p>
             <div className='producto-view-detail-price-container'>
               {!esDueño && (
-                <button className='fav-producto-detail-button'>
+                <button className={ esFavorito ? 'fav-producto-detail-button' : 'fav-producto-detail-button no-fav'} onClick={() => agregarAFavoritos(productoActual)}>
                   A Favoritos
                 </button>
               )}

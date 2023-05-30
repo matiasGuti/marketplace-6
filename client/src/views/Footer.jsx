@@ -32,9 +32,6 @@ const Footer = () => {
       </div>
 
       <div>
-        <p className='float-rigth '>
-          <button className='btn btn-primary'>Back to top</button>
-        </p>
         <p>&copy; 2022–2023 Desafiolatam, Inc. &middot; </p>
       </div>
     </div>
