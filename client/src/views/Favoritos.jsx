@@ -1,5 +1,4 @@
 import NewCard from '../components/NewCard';
-import Footer from './Footer';
 import MyContext from '../my-context';
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
@@ -39,7 +38,7 @@ const Favoritos = () => {
       <div className='cards-container'>
         {favs && <NewCard market={favs} paginaFav={true} />}
       </div>
-      <Footer />
+      
     </>
   );
 };
