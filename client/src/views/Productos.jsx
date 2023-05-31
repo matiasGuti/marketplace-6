@@ -1,6 +1,4 @@
 import NewCard from '../components/NewCard';
-import Footer from './Footer';
-
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -28,9 +26,9 @@ const Productos = () => {
   return (
     <Container className='text-center'>
       <h1>Mis productos !</h1>
-      <Row>
+      <Row className='min-vh-100"'>
         <Col>
-          <CardUno market={productosFiltrados} />
+          <NewCard market={productosFiltrados} />
         </Col>
       </Row>
     </Container>

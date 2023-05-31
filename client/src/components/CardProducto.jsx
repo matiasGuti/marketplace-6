@@ -135,7 +135,7 @@ function CardProducto({ producto, paginaFav }) {
 
   return (
     <Card
-      className='card-container'
+      className='card-container d-inline-flex p-5 m-3'
       key={producto.id_producto}
       style={{ width: '18rem' }}
     >

@@ -170,7 +170,7 @@ function DetalleProducto() {
     <>
       {loading && <p>Cargando...</p>}
       {productoActual && (
-        <div className='producto-view-container'>
+        <div className='producto-view-container vh-50'>
           <div className='producto-view-img-container'>
             <img src={productoActual.imagen} alt={productoActual.titulo} />
           </div>

@@ -10,15 +10,11 @@ import Registrar from './views/Registrar';
 import Login from './views/Login';
 import NewHome from './views/NewHome';
 import Perfil from './views/Perfil';
-<<<<<<< HEAD
-
-=======
-import Favoritos from './views/Favoritos';
->>>>>>> 1f64c34ba0de4ff056c4117d2f165e6f5883fda2
 import Pagina404 from './views/Pagina404';
 import Productos from './views/Productos';
 import CrearProducto from './views/CrearProducto';
 import DetalleProducto from './views/DetalleProducto';
+import Favoritos from './views/Favoritos';
 
 //Components
 import Navbar2 from './components/Navbar2';

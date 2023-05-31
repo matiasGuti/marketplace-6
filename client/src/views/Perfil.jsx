@@ -22,7 +22,7 @@ const Perfil = () => {
 
   return (
     <div className='perfil-container'>
-      <h2>Bienvenido {usuario.nombre} a tu perfil</h2>
+      {usuario && <h2>Bienvenido {usuario.nombre} a tu perfil</h2>}
       <div className='opciones-perfil'>
         <div>
           <p className='titulo-perfil'>Ver mis productos</p>
