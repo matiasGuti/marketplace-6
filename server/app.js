@@ -208,7 +208,7 @@ app.delete('/favoritos/:id_producto', async (req, res) => {
   try {
     const { id_producto } = req.params;
     const { id_usuario } = req.body;
-    await eliminarFavoritoTotal(id_usuario, id_producto);
+    await eliminarFavorito(id_usuario, id_producto);
     res.send('Producto eliminado de favoritos');
   } catch (err) {
     res.status(err.code || 500).send(err);

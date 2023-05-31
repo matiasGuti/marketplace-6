@@ -43,13 +43,7 @@ const eliminarFavorito = async (id_usuario, id_producto) => {
   console.log('Producto eliminado de favoritos con exito');
 };
 
-const eliminarFavoritoTotal = async (id_usuario, id_producto) => {
-  try {
-    await eliminarProductoDelCarro(id_usuario, id_producto)
-  } catch(err) {
-    console.log(err.message);
-  }
-  
+const eliminarFavoritoTotal = async (id_producto) => {
   const consulta =
     'DELETE FROM favoritos WHERE id_producto = $1';
   const valor = [id_producto];
