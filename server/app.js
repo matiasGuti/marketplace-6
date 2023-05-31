@@ -17,7 +17,7 @@ const {
   restarCantidadProducto,
   checkProductoAgregado,
 } = require('./consultas/consultasCarro');
-const { obtenerFavoritosUsuario, revisarSiProductoYaAgregado, agregarAFavorito, eliminarFavoritoTotal } = require('./consultas/consultasFavoritos')
+const { obtenerFavoritosUsuario, revisarSiProductoYaAgregado, agregarAFavorito, eliminarFavorito } = require('./consultas/consultasFavoritos')
 const { validarToken } = require('./middlewares/middlewares');
 const express = require('express');
 const cors = require('cors');
