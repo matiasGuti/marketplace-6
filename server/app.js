@@ -17,7 +17,7 @@ const {
   restarCantidadProducto,
   checkProductoAgregado,
 } = require('./consultas/consultasCarro');
-const { obtenerFavoritosUsuario, revisarSiProductoYaAgregado, agregarAFavorito, eliminarFavorito } = require('./consultas/consultasFavoritos')
+const { obtenerFavoritosUsuario, revisarSiProductoYaAgregado, agregarAFavorito, eliminarFavoritoTotal } = require('./consultas/consultasFavoritos')
 const { validarToken } = require('./middlewares/middlewares');
 const express = require('express');
 const cors = require('cors');
@@ -208,7 +208,7 @@ app.delete('/favoritos/:id_producto', async (req, res) => {
   try {
     const { id_producto } = req.params;
     const { id_usuario } = req.body;
-    await eliminarFavorito(id_usuario, id_producto);
+    await eliminarFavoritoTotal(id_usuario, id_producto);
     res.send('Producto eliminado de favoritos');
   } catch (err) {
     res.status(err.code || 500).send(err);

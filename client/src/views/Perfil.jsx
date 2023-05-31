@@ -9,20 +9,20 @@ const Perfil = () => {
   const { usuario } = useContext(MyContext);
   const navigate = useNavigate();
 
-  // Debe estar con sesion iniciada para entrar a esta view (por si tipea la url a mano)
-  const usuarioSinIniciarSesion = () => {
-    if (!localStorage.getItem('token')) {
-      navigate('/error');
-    }
-  };
-
   useEffect(() => {
+    // Debe estar con sesion iniciada para entrar a esta view (por si tipea la url a mano)
+    const usuarioSinIniciarSesion = () => {
+      if (!localStorage.getItem('token')) {
+        navigate('/error');
+      }
+    };
+
     usuarioSinIniciarSesion();
   }, []);
 
   return (
     <div className='perfil-container'>
-      <h2>Bienvenido {usuario.nombre} a tu perfil</h2>
+      {usuario && <h2>Bienvenido {usuario.nombre} a tu perfil</h2>}
       <div className='opciones-perfil'>
         <div>
           <p className='titulo-perfil'>Ver mis productos</p>
